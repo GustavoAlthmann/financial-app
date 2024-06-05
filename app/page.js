@@ -9,7 +9,7 @@ export default function Home() {
           Welcome to Our App
         </h1>
         <p className="text-gray-600 mb-8">
-          We're excited to have you here. Please log in to continue.
+          We are excited to have you here. Please log in to continue.
         </p>
         <Link
           className={`${variants["ghost"]} ${sizes["base"]} flex text-center space-x-2 `}
