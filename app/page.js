@@ -17,6 +17,13 @@ export default function Home() {
         >
           <div>Go to Login</div>
         </Link>
+        <div className="dark:text-gray-600">Or</div>
+        <Link
+          className={`${variants["ghost"]} ${sizes["base"]} flex text-center space-x-2 `}
+          href="/dashboard"
+        >
+          <div>Go to DashBoard</div>
+        </Link>
       </div>
     </div>
   );
