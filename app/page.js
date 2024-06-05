@@ -1,7 +1,13 @@
+import { createClient } from "@/lib/supabase/server";
 import { sizes, variants } from "@/lib/variants";
 import Link from "next/link";
 
-export default function Home() {
+export default async function Home() {
+  const supabase = createClient();
+  const {
+    data: { user },
+    error,
+  } = await supabase.auth.getUser();
   return (
     <div className="flex items-center justify-center min-h-screen">
       <div className="bg-white p-10 rounded-lg shadow-lg text-center">
@@ -11,19 +17,19 @@ export default function Home() {
         <p className="text-gray-600 mb-8">
           We are excited to have you here. Please log in to continue.
         </p>
-        <Link
+        {!user && <Link
           className={`${variants["ghost"]} ${sizes["base"]} flex text-center space-x-2 `}
           href="/login"
         >
           <div>Go to Login</div>
-        </Link>
-        <div className="dark:text-gray-600">Or</div>
-        <Link
+        </Link>}
+        {user && <Link
           className={`${variants["ghost"]} ${sizes["base"]} flex text-center space-x-2 `}
           href="/dashboard"
         >
           <div>Go to DashBoard</div>
-        </Link>
+        </Link>}
+        
       </div>
     </div>
   );
